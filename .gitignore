@@ -1,1 +1,5 @@
 node_modules
+.sass-cache
+lib/new_box/dist/*
+lib/new_box/components/*
+!.gitkeep
