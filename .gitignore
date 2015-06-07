@@ -3,3 +3,5 @@ node_modules
 lib/new_box/dist/*
 lib/new_box/components/*
 !.gitkeep
+testbox
+npm-debug.log
