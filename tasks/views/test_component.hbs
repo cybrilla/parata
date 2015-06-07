@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/app.dist.css">
-  <title></title>
+  <title>Sketchbox - PlayGround</title>
+  <style>
+    .sb-component-title {
+      text-transform: capitalize;
+    }
+  </style>
 </head>
 <body>
+{{#each components}}
+<h2 class="sb-component-title">{{ name }}</h2>
+<p>{{ description }}</p>
 {{{ example }}}
+{{/each}}
 </body>
 </html>
