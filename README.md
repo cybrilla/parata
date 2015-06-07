@@ -26,58 +26,58 @@ $ npm install sketchbox --save
   });
   
 grunt.loadNpmTasks('sketchbox');
- ```
+```
  
- ### Configure sass / less
- ```
-   grunt.initConfig({
-    sketchbox: {
-      options: {
-        stylePreProcessor: 'scss'
-      }
-    },
-    sass: {
-      dist: {
-        files: {
-          'dist/app.dist.css': 'components/app.scss'
-        }
+### Configure sass / less
+```
+  grunt.initConfig({
+  sketchbox: {
+    options: {
+      stylePreProcessor: 'scss'
+    }
+  },
+  sass: {
+    dist: {
+      files: {
+        'dist/app.dist.css': 'components/app.scss'
       }
     }
-  });
+  }
+});
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('sketchbox');
+// Load the plugin that provides the "uglify" task.
+grunt.loadNpmTasks('sketchbox');
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
- ```
+grunt.loadNpmTasks('grunt-contrib-sass');
+```
+
+### Initialize Sketchbox
+```
+$ grunt sketchbox --init
+```
  
- ### Initialize Sketchbox
- ```
- $ grunt sketchbox --init
- ```
- 
- ### Create a component
- ```
- $ grunt sketchbox --component button
- ```
- 
- ### Compile sass / less
- ```
- $ grunt sass
- ```
- 
- ### Preview your component
- ```
- $ grunt sketchbox --serve
- ```
- Navigate to: `http://localhost:8888/test/button`
- 
- ## Quick example
- Open `components/button/` in your editor.
- 
- #### Add some styling
- ```
- /**
+### Create a component
+```
+$ grunt sketchbox --component button
+```
+
+### Compile sass / less
+```
+$ grunt sass
+```
+
+### Preview your component
+```
+$ grunt sketchbox --serve
+```
+Navigate to: `http://localhost:8888/test/button`
+
+## Quick example
+Open `components/button/` in your editor.
+
+#### Add some styling
+```
+/**
   * @component button
   * @description Button.
   * @variants primary | secondary | default
@@ -101,20 +101,20 @@ button {
 }
 ```
  
- #### Import the component to `components/app.scss`
- ```
- /**
-   * Bootstrap file for all styles
-   */
+#### Import the component to `components/app.scss`
+```
+/**
+  * Bootstrap file for all styles
+  */
 
-    @import 'button/style'
- ```
- 
- #### Create sa sample / example for the component
- ```
+  @import 'button/style'
+```
+
+#### Create sa sample / example for the component
+```
 <example for="button">
 <button class="{{ className }}">Button</button>
 </example>
- ```
+```
  
  P.S.: Still in development / Not available via npm.
