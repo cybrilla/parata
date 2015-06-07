@@ -1,6 +1,5 @@
 var expect = require('chai').expect,
     initAction = require('../../../tasks/lib/init.js'),
-    sinon = require('sinon'),
     taskHelper = require('../../support/task.helper.js'),
     fs = require('fs');
 

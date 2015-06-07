@@ -3,7 +3,8 @@ var fs = require('fs'),
     server = express(),
     hbs = require('hbs'),
     actions = {
-      init: require('./lib/init.js')
+      init: require('./lib/init.js'),
+      component: require('./lib/component.js')
     };
 
 module.exports = function (grunt) {
