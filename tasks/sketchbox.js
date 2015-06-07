@@ -4,7 +4,8 @@ var fs = require('fs'),
     hbs = require('hbs'),
     actions = {
       init: require('./lib/init.js'),
-      component: require('./lib/component.js')
+      component: require('./lib/component.js'),
+      serve: require('./lib/serve.js')
     };
 
 module.exports = function (grunt) {
@@ -14,7 +15,7 @@ module.exports = function (grunt) {
         done = this.async();
 
     // Default options
-    setDefaultOption(options, 'stylePreProcessor', 'sass');
+    setDefaultOption(options, 'stylePreProcessor', 'scss');
     setDefaultOption(options, 'componentsDirectory', 'components');
 
     this._defaultOptions = options;

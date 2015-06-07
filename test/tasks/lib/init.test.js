@@ -1,7 +1,7 @@
 var expect = require('chai').expect,
     initAction = require('../../../tasks/lib/init.js'),
     taskHelper = require('../../support/task.helper.js'),
-    fs = require('fs');
+    fs = require('fs-extra');
 
 describe('init', function(){
   var options = taskHelper.configOptions,
@@ -11,7 +11,7 @@ describe('init', function(){
 
     afterEach(function(done) {
       if(fs.existsSync(options.componentsDirectory)) {
-        fs.rmdirSync(options.componentsDirectory);
+        fs.removeSync(options.componentsDirectory);
         logger.reset();
       }
 
@@ -21,6 +21,13 @@ describe('init', function(){
     it("creates a components directory with the correct name", function(done) {
       initAction('init', options, logger, function() {
         expect(fs.existsSync(options.componentsDirectory)).to.be.true;
+        done();
+      });
+    });
+
+    it("creates a style bootstrap file", function(done) {
+      initAction('init', options, logger, function() {
+        expect(fs.existsSync(options.componentsDirectory + '/app.' + options.stylePreProcessor)).to.be.true;
         done();
       });
     });

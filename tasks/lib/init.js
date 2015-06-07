@@ -9,6 +9,19 @@ module.exports = function(value, options, logger, done) {
     err ? logger.errorlns('['+err.code+'] Error creating components directory.')
         : logger.oklns('Components directory named `' + componentsDirectoryName + '` created successfully.');
 
-    done();
+    if(err) { done(); return; }
+
+    createStyleBootstrapFile(componentsDirectoryPath, options.stylePreProcessor, function(err) {
+      if(err) { done(); return; }
+
+      logger.oklns('Style bootstrap file called `app.' + options.stylePreProcessor + '` created successfully.')
+      done();
+    });
+  });
+};
+
+var createStyleBootstrapFile = function(componentsDirectoryPath, extension, callback) {
+  fs.writeFile(path.join(componentsDirectoryPath, 'app.' + extension), '/**\n  * Bootstrap file for all styles\n  */', function(err) {
+    callback(err);
   });
 };
