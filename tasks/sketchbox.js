@@ -17,6 +17,8 @@ module.exports = function (grunt) {
     // Default options
     setDefaultOption(options, 'stylePreProcessor', 'scss');
     setDefaultOption(options, 'componentsDirectory', 'components');
+    setDefaultOption(options, 'dest', 'dist');
+    setDefaultOption(options, 'serverPort', '8888');
 
     this._defaultOptions = options;
 
