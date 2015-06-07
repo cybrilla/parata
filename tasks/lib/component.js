@@ -16,22 +16,29 @@ module.exports = function(value, options, logger, done) {
     createStyleFile(newComponentPath, stylePreProcessor, function(err) {
       if(err) { done(); return; }
 
-      createExampleFile(newComponentPath, 'html', done);
+      logger.oklns('Style file for`' + value + '` created successfully.')
+      createExampleFile(newComponentPath, 'html', function() {
+        logger.oklns('Example file for`' + value + '` created successfully.')
+        done();
+      });
     });
   });
 };
 
 var createStyleFile = function(componentPath, extension, callback) {
-  var styleFilePath = path.join(componentPath, 'style.' + extension);
+  var styleFilePath = path.join(componentPath, 'style.' + extension),
+      contents = fs.readFileSync(path.join(__dirname, '../templates/component/style.tpl'), 'utf8');
 
-  fs.writeFile(styleFilePath, "HELLO!", function(err) {
+  fs.writeFile(styleFilePath, contents, function(err) {
     callback(err);
   });
 };
 
-var createExampleFile = function(componentPath, extension, done) {
-  var exampleFilePath = path.join(componentPath, 'example.' + extension);
-  fs.writeFile(exampleFilePath, "HELLO!", function(err) {
-    done();
+var createExampleFile = function(componentPath, extension, callback) {
+  var exampleFilePath = path.join(componentPath, 'example.' + extension),
+      contents = fs.readFileSync(path.join(__dirname, '../templates/component/example.html'), 'utf8');
+
+  fs.writeFile(exampleFilePath, contents, function(err) {
+    callback();
   });
 };
