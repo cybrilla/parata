@@ -14,7 +14,9 @@
 {{#each components}}
 <h2 class="sb-component-title">{{ name }}</h2>
 <p>{{ description }}</p>
-{{{ example }}}
+{{#each examples}}
+{{{ this }}}
+{{/each}}
 {{/each}}
 </body>
 </html>

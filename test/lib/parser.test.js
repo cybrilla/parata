@@ -21,7 +21,12 @@ describe('Comments Parser', function(){
         expected = {
           name: 'component-name-1',
           description: 'I am an awesome component 1.',
-          example: '\n<div class=\"component-name-1\"></div>\n'
+          example: '\n<div class=\"component-name-1\"></div>\n',
+          classNames: [
+            'primary',
+            'default',
+            'secondary'
+          ]
         };
 
     expect(component).to.deep.equal(expected);
