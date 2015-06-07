@@ -21,7 +21,7 @@ module.exports = function(value, options, logger, done) {
           ), 'utf8')
         };
 
-    res.render('component', data);
+    res.render('test_component', data);
   });
 
   server = app.listen(options.serverPort, function () {
