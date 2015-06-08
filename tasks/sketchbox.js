@@ -5,7 +5,8 @@ var fs = require('fs'),
     actions = {
       init: require('./lib/init.js'),
       component: require('./lib/component.js'),
-      serve: require('./lib/serve.js')
+      serve: require('./lib/serve.js'),
+      build: require('./lib/build.js')
     };
 
 module.exports = function (grunt) {

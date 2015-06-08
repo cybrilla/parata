@@ -3,6 +3,7 @@ var fs = require('fs-extra'),
     express = require('express'),
     parser = require('../../lib/parser.js'),
     hbs = require('hbs'),
+    Component = require('../../lib/component.js'),
     app = express();
 
 module.exports = function(value, options, logger, done) {
@@ -16,44 +17,36 @@ module.exports = function(value, options, logger, done) {
     var componentName = req.params.name,
       
         // Read style file
-        styleFile = fs.readFileSync(path.join(
+        styleFile = path.join(
           process.cwd(),
           options.componentsDirectory,
           componentName,
           'style.' + options.stylePreProcessor
-        ), 'utf8'),
+        ),
 
         // Read example file
-        exampleFile = fs.readFileSync(path.join(
+        exampleFile = path.join(
           process.cwd(),
           options.componentsDirectory,
           componentName,
           'example.html'
-        ), 'utf8'),
-        
-        parsedComponents = parser.parseCommentBlock(styleFile, exampleFile),
+        ),
+
+        parsedComponents,
 
         // Data for template
         data;
 
+        parser.styleFilePath = styleFile;
+        parser.exampleFilePath = exampleFile;
+        parsedComponents = parser.parseCommentBlock();
+
         for(var i=0, length=parsedComponents.length; i<length; i++) {
           var examples = [],
-              component = parsedComponents[i],
+              component = new Component(parsedComponents[i]),
               template;
 
-          if(component.classNames.length > 0) {
-            for(var j=0, elength=component.classNames.length; j<elength; j++) {
-              template = hbs.compile(component.example);
-              examples.push(template({
-                className: component.classNames[j]
-              }));
-            }
-          }
-          else {
-            examples.push(component.example);
-          }
-
-          parsedComponents[i].examples = examples;
+          parsedComponents[i].examples = component.getExamples();
         }
 
     data = {

@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/app.dist.css">
-  <title></title>
+  <title>Sketchbox - {{ name }}</title>
+  <style>
+    .sb-component-title {
+      text-transform: capitalize;
+    }
+  </style>
 </head>
 <body>
-{{{ example }}}
+{{#each components}}
+<h2 class="sb-component-title">{{ name }}</h2>
+<p>{{ description }}</p>
+{{#each examples}}
+{{{ this }}}
+{{/each}}
+{{/each}}
 </body>
 </html>
