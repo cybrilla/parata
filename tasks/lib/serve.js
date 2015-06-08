@@ -43,7 +43,7 @@ module.exports = function(value, options, logger, done) {
 
           if(component.classNames.length > 0) {
             for(var j=0, elength=component.classNames.length; j<elength; j++) {
-              template = hbs.compile(component.example[i]);
+              template = hbs.compile(component.example);
               examples.push(template({
                 className: component.classNames[j]
               }));
