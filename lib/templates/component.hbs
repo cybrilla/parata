@@ -2,10 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ name }}</title>
+  <title>{{ name}}</title>
   <link rel="stylesheet" href="/app.dist.css">
+  <style>
+    body {
+      width: 980px;
+      margin: 0px auto;
+    }
+
+    code.sb-code-block {
+      display: block;
+      background: #F5F5F5;
+      padding: 0px 10px;
+    }
+
+    .sb-text {
+      font-family: sans-serif;
+    }
+
+    h2.sb-text {
+      text-decoration: underline;
+    }
+
+    .sb-capitalize {
+      text-transform: capitalize;
+    }
+  </style>
 </head>
 <body>
+  <h1 class="sb-text">{{titleize name}}</h1>
+  <p class="sb-text">{{ description }}</p>
+  <h2 class="sb-text">Example</h2>
   {{{ example }}}
+  <h2 class="sb-text">Code</h2>
+  <code class="sb-code-block">
+    <pre>
+      {{ rawExample }}
+    </pre>
+  </code>
 </body>
 </html>

@@ -2,15 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ name }}</title>
-  <link rel="stylesheet" href="/app.dist.css">
+  <title>SKETCHBOX</title>
+  <style>
+    body {
+      width: 980px;
+      margin: 0px auto;
+      font-family: sans-serif;
+    }
+
+    .sb-component {
+      width: 300px;
+      display: inline-block;
+      padding: 10px;
+      min-height: 200px;
+    }
+
+    .sb-link > a {
+      background: #F5F5F5;
+      text-decoration: none;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
   {{#each components}}
-  <div class="component">
+  <div class="sb-component">
     <h1>{{titleize name}}</h1>
     <p>{{ description }}</p>
-    {{link name}}
+    <div class="sb-link">
+      {{link name}}
+    </div>
   </div>
   {{/each}}
 </body>
