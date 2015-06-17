@@ -9,8 +9,8 @@ module.exports = function(value, options, logger) {
       components;
 
   components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
-  generateComponentFile(components, options.dest, options.componentTemplatePath);
-  generateIndexFile(components, options.dest, options.indexTemplatePath);
+  generateComponentFile(components, dest, options.componentTemplatePath);
+  generateIndexFile(components, dest, options.indexTemplatePath);
 };
 
 var getComponents = function(srcPath, styleExt, dest) {
