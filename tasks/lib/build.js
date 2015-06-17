@@ -1,5 +1,4 @@
 var fs = require('fs-extra'),
-    hbs = require('hbs'),
     path = require('path'),
     Parser = require('../../lib/parser.js'),
     template = require('../../lib/template.js');

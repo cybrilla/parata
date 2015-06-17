@@ -9,11 +9,10 @@
   "author": "Swaroop Sethumadhavan",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.12.4",
     "fs-extra": "^0.18.4",
     "grunt": "^0.4.5",
     "handlebars": "^3.0.3",
-    "hbs": "^3.0.1"
+    "node-static": "^0.7.6"
   },
   "devDependencies": {
     "chai": "^3.0.0",

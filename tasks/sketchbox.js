@@ -1,7 +1,4 @@
-var fs = require('fs'),
-    express = require('express'),
-    server = express(),
-    hbs = require('hbs'),
+var fs = require('fs-extra'),
     path = require('path'),
     actions = {
       init: require('./lib/init.js'),
