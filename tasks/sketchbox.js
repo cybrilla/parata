@@ -18,7 +18,8 @@ module.exports = function (grunt) {
     setDefaultOption(options, 'componentsDirectory', 'components');
     setDefaultOption(options, 'dest', 'dist');
     setDefaultOption(options, 'serverPort', '8888');
-    setDefaultOption(options, 'componentTemplatePath', path.join(__dirname, '/../lib/templates/component.html'));
+    setDefaultOption(options, 'componentTemplatePath', path.join(__dirname, '/../lib/templates/component.hbs'));
+    setDefaultOption(options, 'indexTemplatePath', path.join(__dirname, '/../lib/templates/index.hbs'));
 
     this._defaultOptions = options;
 

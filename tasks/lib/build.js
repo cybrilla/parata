@@ -10,6 +10,7 @@ module.exports = function(value, options, logger) {
 
   components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
   generateComponentFile(components, options.dest, options.componentTemplatePath);
+  generateIndexFile(components, options.dest, options.indexTemplatePath);
 };
 
 var getComponents = function(srcPath, styleExt, dest) {
@@ -52,4 +53,10 @@ var generateComponentFile = function(components, dest, templatePath) {
     component = components[i];
     template.generateComponent(dest, templatePath, component);
   }
+};
+
+var generateIndexFile = function(_components, dest, templatePath) {
+  var components = _components.map(function(c) { return c.getAttributes() });
+
+  template.generateIndex(dest, templatePath, components);
 };
