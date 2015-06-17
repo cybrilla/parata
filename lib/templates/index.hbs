@@ -5,34 +5,37 @@
   <title>SKETCHBOX</title>
   <style>
     body {
-      width: 980px;
-      margin: 0px auto;
+      // width: 980px;
+      // margin: 0px auto;
       font-family: sans-serif;
     }
 
-    .sb-component {
-      width: 300px;
-      display: inline-block;
-      padding: 10px;
-      min-height: 200px;
-    }
-
-    .sb-link > a {
+    .sb-component > a {
       background: #F5F5F5;
       text-decoration: none;
-      padding: 10px;
+      padding: 2px;
+    }
+
+    .sb-component {
+      padding: 10px 0px;
+    }
+
+    .sb-navbar {
+      position: fixed;
+      height: 100%;
+      padding: 0 10px;
+      list-style-type: none;
+      overflow-y: scroll;
     }
   </style>
 </head>
 <body>
+  <ul class="sb-navbar">
   {{#each components}}
-  <div class="sb-component">
-    <h1>{{titleize name}}</h1>
-    <p>{{ description }}</p>
-    <div class="sb-link">
-      {{link name}}
-    </div>
-  </div>
+  <li class="sb-component">
+    {{link name}}
+  </li>
   {{/each}}
+  </ul>
 </body>
 </html>
