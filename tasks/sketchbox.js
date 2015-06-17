@@ -2,6 +2,7 @@ var fs = require('fs'),
     express = require('express'),
     server = express(),
     hbs = require('hbs'),
+    path = require('path'),
     actions = {
       init: require('./lib/init.js'),
       component: require('./lib/component.js'),
@@ -20,6 +21,7 @@ module.exports = function (grunt) {
     setDefaultOption(options, 'componentsDirectory', 'components');
     setDefaultOption(options, 'dest', 'dist');
     setDefaultOption(options, 'serverPort', '8888');
+    setDefaultOption(options, 'componentTemplatePath', path.join(__dirname, '/../lib/templates/component.html'));
 
     this._defaultOptions = options;
 

@@ -1,79 +1,56 @@
 var fs = require('fs-extra'),
-    parser = require('../../lib/parser.js'),
-    Component = require('../../lib/component.js'),
     hbs = require('hbs'),
-    path = require('path');
+    path = require('path'),
+    Parser = require('../../lib/parser.js'),
+    template = require('../../lib/template.js');
 
-module.exports = function(value, options, logger, done) {
-  var componentsDirectoryName = options.componentsDirectory,
-      componentsDirectoryPath = path.join(process.cwd(), componentsDirectoryName),
-      dest = path.join(process.cwd(), options.dest);
+module.exports = function(value, options, logger) {
+  var componentsDirectoryPath = path.join(process.cwd(), options.componentsDirectory),
+      dest = path.join(process.cwd(), options.dest),
+      components;
 
-  // Clean files in dest
-  cleanDestFiles(dest, options.stylePreProcessor);
-
-  // Create a component htmls
-  createComponentFiles(componentsDirectoryPath, options.stylePreProcessor, dest, function() {
-    done();
-  });
+  components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
+  generateComponentFile(components, options.dest, options.componentTemplatePath);
 };
 
-var cleanDestFiles = function(dest, styleExtname) {
-  var destFiles = fs.readdirSync(dest),
-      destfile,
-      i, length;
-  
-  for(i=0, length=destFiles.length; i<length; i++) {
-    destfile = path.join(dest, destFiles[i]);
-    if(path.extname(destfile) === '.' + styleExtname || path.extname(destfile) === '.html') {
-      fs.remove(destfile);
+var getComponents = function(srcPath, styleExt, dest) {
+  var list = fs.readdirSync(srcPath),
+      i, length,
+      j, rlength,
+      stat,
+      parser,
+      item,
+      component,
+      components = [];
+
+  for(i=0, length=list.length; i<length; i++) {
+    item = path.join(srcPath, list[i]);
+    stat = fs.statSync(item);
+
+    if(stat.isDirectory()) {
+      parser = new Parser();
+      parser.setStyleFilePath(path.join(item, 'style.' + styleExt))
+            .setExampleFilePath(path.join(item, 'example.html'))
+            .run();
+
+      results = parser.getComponents();
+
+      for(j=0, rlength=results.length; j<rlength; j++) {
+        component = results[j];
+        components.push(component);
+      }
     }
   }
 
+  return components;
 };
 
-var createComponentFiles = function(componentsDirectoryPath, stylePreProcessor, dest, callback) {
-  var component,
-      componentPath,
-      stat,
-      styleFile,
-      exampleFile,
-      parsedComponents,
-      i, length,
-      j, elength;
+var generateComponentFile = function(components, dest, templatePath) {
+  var i, length,
+      component;
 
-  fs.readdir(componentsDirectoryPath, function(err, files) {
-    var examples,
-        template,
-        templateContents;
-
-    for(i=0, length=files.length; i<length; i++) {
-      componentPath = path.join(componentsDirectoryPath, files[i]);
-      stat = fs.statSync(componentPath);
-      if(stat.isDirectory()) {
-        styleFile = path.join(componentPath, 'style.' + stylePreProcessor);
-        exampleFile = path.join(componentPath, 'example.html');
-
-        parser.styleFilePath = styleFile;
-        parser.exampleFilePath = exampleFile;
-        parsedComponents = parser.parseCommentBlock();
-
-        for(j=0, elength=parsedComponents.length; j<elength; j++) {
-          examples = [];
-          component = new Component(parsedComponents[j]);
-
-          parsedComponents[j].examples = component.getExamples();
-        }
-
-        templateContents = fs.readFileSync(path.join(__dirname, '/../views/component.hbs'), 'utf8');
-        template = hbs.compile(templateContents);
-
-        fs.writeFileSync(path.join(dest, files[i]) + '.html', template({
-          components: parsedComponents, name: path.basename(componentPath) 
-        }));
-      }
-    }
-
-    callback();
-  });
+  for(i=0, length=components.length; i<length; i++) {
+    component = components[i];
+    template.generateComponent(dest, templatePath, component);
+  }
 };
