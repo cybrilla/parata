@@ -9,7 +9,7 @@ var fs = require('fs-extra'),
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('sketchbox', 'css web components', function() {
+  grunt.registerTask('parata', 'css web components', function() {
     var options = this.options(),
         done = this.async();
 

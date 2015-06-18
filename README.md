@@ -1,8 +1,8 @@
-# SketchBox
+# Parata
 Component based styles for the web.
 
 ## Getting Started
-Sketchbox is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com).
+Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com).
 
 Once `grunt` is installed, follow the steps listed below:
 ### Initialize an empty `npm` project
@@ -10,28 +10,28 @@ Once `grunt` is installed, follow the steps listed below:
 $ npm init
 ```
 
-### Install Sketchbox
+### Install Parata
 ```
-$ npm install sketchbox --save
+$ npm install parata --save
 ```
 
-### Add Sketchbox to Gruntfile.js
+### Add Parata to Gruntfile.js
 ```
   grunt.initConfig({
-    sketchbox: {
+    parata: {
       options: {
         stylePreProcessor: 'scss'
       }
     }
   });
   
-grunt.loadNpmTasks('sketchbox');
+grunt.loadNpmTasks('parata');
 ```
  
 ### Configure sass / less
 ```
   grunt.initConfig({
-  sketchbox: {
+  parata: {
     options: {
       stylePreProcessor: 'scss'
     }
@@ -46,19 +46,19 @@ grunt.loadNpmTasks('sketchbox');
 });
 
 // Load the plugin that provides the "uglify" task.
-grunt.loadNpmTasks('sketchbox');
+grunt.loadNpmTasks('parata');
 
 grunt.loadNpmTasks('grunt-contrib-sass');
 ```
 
-### Initialize Sketchbox
+### Initialize Parata
 ```
-$ grunt sketchbox --init
+$ grunt parata --init
 ```
  
 ### Create a component
 ```
-$ grunt sketchbox --component button
+$ grunt parata --component button
 ```
 
 ### Compile sass / less
@@ -68,9 +68,10 @@ $ grunt sass
 
 ### Preview your component
 ```
-$ grunt sketchbox --serve
+$ grunt parata --serve
 ```
 Navigate to: `http://localhost:8888/test/button`
+
 
 ## Quick example
 Open `components/button/` in your editor.
@@ -118,3 +119,4 @@ button {
 ```
  
  P.S.: Still in development / Not available via npm.
+

@@ -2,21 +2,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    sketchbox: {
-      options: {
-        stylePreProcessor: 'scss'
-      },
-    },
-    sass: {                              
-      dist: {                            
-        options: {                       
-          style: 'expanded'
-        },
-        files: {                         
-          'dist/app.dist.css': 'components/app.scss'
-        }
-      }
-    },
     mochaTest: {
       test: {
         options: {

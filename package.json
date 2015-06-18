@@ -1,8 +1,8 @@
 {
-  "name": "sketchbox",
+  "name": "parata",
   "version": "0.0.1",
   "description": "Component based style guide for the web.",
-  "main": "./lib/sketchbox.js",
+  "main": "./lib/parata.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
