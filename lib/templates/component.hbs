@@ -36,7 +36,11 @@
   <p class="sb-text">{{ description }}</p>
     {{#each examples }}
     <div id="sb-component-{{ variant }}" class="sb-component">
-      <h2 class="sb-text"><a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
+      <h2 class="sb-text">
+        {{#if variant}}
+          <a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
+        {{/if}}
+      </h2>
       {{{ code }}}
       <code class="sb-code-block">
         <pre id="sb-code-{{ variant }}">
