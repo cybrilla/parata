@@ -66,6 +66,11 @@ $ grunt parata --component button
 $ grunt sass
 ```
 
+### Build components
+```
+$ grunt parata --build
+```
+
 ### Preview your component
 ```
 $ grunt parata --serve
@@ -111,12 +116,10 @@ button {
   @import 'button/style'
 ```
 
-#### Create sa sample / example for the component
+#### Create a sample / example for the component
 ```
 <example for="button">
-<button class="{{ className }}">Button</button>
+<button class="{{ variant }}">{{ variant }}</button>
 </example>
 ```
- 
- P.S.: Still in development / Not available via npm.
 
