@@ -67,8 +67,18 @@
         </pre>
         <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ variant }}">COPY</button>
       </code>
-      <hr>
     </div>
+    {{#if scriptExample}}
+      <hr>
+<code class="sb-code-block">
+<pre id="sb-code-{{ variant }}">
+{{ scriptExample }}
+</pre>
+</code>
+    <script>
+      {{{ scriptExample }}}
+    </script>
+    {{/if}}
     <script>
       (function() {
        var client = new ZeroClipboard(document.getElementById('sb-{{ variant }}-copy-btn'));
@@ -93,6 +103,7 @@
         });
       }());
     </script>
+    <hr>
     {{/each}}
 </body>
 </html>
