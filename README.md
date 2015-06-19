@@ -2,7 +2,7 @@
 Component based styles for the web.
 
 ## Getting Started
-Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com).
+Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). Parata lets you build re-usable components for the web and generates a component wise styleguide.
 
 Once `grunt` is installed, follow the steps listed below:
 ### Initialize an empty `npm` project
@@ -78,6 +78,7 @@ $ grunt parata --serve
 Navigate to: `http://localhost:8888/test/button`
 
 
+
 ## Quick example
 Open `components/button/` in your editor.
 
@@ -107,6 +108,7 @@ button {
 }
 ```
  
+
 #### Import the component to `components/app.scss`
 ```
 /**
@@ -116,10 +118,17 @@ button {
   @import 'button/style'
 ```
 
-#### Create a sample / example for the component
+
+#### Create an HTML sample / example for the component in example.html
 ```
 <example for="button">
 <button class="{{ variant }}">{{ variant }}</button>
 </example>
 ```
 
+#### Create a javascript snippet for the component example.html
+```
+<script for="button">
+alert("Hello I'm a component!");
+</script>
+```

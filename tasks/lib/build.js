@@ -11,6 +11,10 @@ module.exports = function(value, options, logger) {
   components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
   generateComponentFile(components, dest, options.componentTemplatePath);
   generateIndexFile(components, dest, options.indexTemplatePath);
+
+  // TODO
+  // Error handling
+  logger.oklns('Successfully built components.');
 };
 
 var getComponents = function(srcPath, styleExt, dest) {
