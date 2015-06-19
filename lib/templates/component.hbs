@@ -33,24 +33,34 @@
     h1.sb-text {
       font-size: 36px;
       padding: 24px 0px;
+      font-weight: bold;
     }
 
     h2.sb-text {
       font-size: 24px;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
+      font-weight: bold;
     }
 
     p.sb-text {
-      padding-bottom:  10px;
+      padding-bottom:  20px;
     }
 
     .sb-code-block {
       font-family: monospace;
       margin-top: 10px;
     }
+
+    .sb-home-page {
+      position: fixed;
+      left: 0;
+      padding: 10px;
+      background: #EEE;
+    }
   </style>
 </head>
 <body>
+  <a class="sb-text sb-home-page" href="/">Go back to Index</a>
   <h1 class="sb-text">{{titleize name}}</h1>
   <p class="sb-text">{{ description }}</p>
     {{#each examples }}

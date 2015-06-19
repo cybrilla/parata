@@ -5,37 +5,45 @@
   <title>PARATA</title>
   <style>
     body {
-      // width: 980px;
-      // margin: 0px auto;
+      width: 980px;
+      margin: 0px auto;
       font-family: sans-serif;
     }
 
     .sb-component > a {
-      background: #F5F5F5;
       text-decoration: none;
-      padding: 2px;
+      display: block;
+      padding: 10px;
+    }
+
+    .sb-component > p {
+      padding: 10px;
+      margin: 0;
     }
 
     .sb-component {
-      padding: 10px 0px;
+      padding: 2px;
+      background: #F5F5F5;
+      display: inline-block;
+      margin: 5px;
+      width: 300px;
     }
 
-    .sb-navbar {
-      position: fixed;
-      height: 100%;
-      padding: 0 10px;
-      list-style-type: none;
-      overflow-y: scroll;
+    h1 {
+      text-decoration: underline;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
-  <ul class="sb-navbar">
+  <h1>Parata Components</h1>
+  <div class="">
   {{#each components}}
-  <li class="sb-component">
+  <div class="sb-component">
     {{link name}}
-  </li>
+    <p>{{ description }}</p>
+  </div>
   {{/each}}
-  </ul>
+  </div>
 </body>
 </html>
