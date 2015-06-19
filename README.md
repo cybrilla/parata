@@ -77,8 +77,6 @@ $ grunt parata --serve
 ```
 Navigate to: `http://localhost:8888/test/button`
 
-
-
 ## Quick example
 Open `components/button/` in your editor.
 
@@ -126,7 +124,7 @@ button {
 </example>
 ```
 
-#### Create a javascript snippet for the component example.html
+#### Create a javascript snippet for the component in example.html
 ```
 <script for="button">
 alert("Hello I'm a component!");
