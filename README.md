@@ -132,6 +132,9 @@ alert("Hello I'm a component!");
 
 ### Customize options
 `stylePreProcessor`   :    Extension of your style files. Eg.: `scss` or `less`.
+
 `componentsDirectory` :    Path where all your components reside.
+
 `dest`                :    Destination where all the build files go into.
+
 `serverPort`          :    Default port the `serve` task.

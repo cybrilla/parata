@@ -1,6 +1,6 @@
 {
   "name": "parata",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Component based style guide for the web.",
   "main": "./lib/parata.js",
   "scripts": {
