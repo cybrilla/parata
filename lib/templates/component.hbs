@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Parata | {{ name}}</title>
+  <title>Parata | {{titleize name}}</title>
   <link rel="stylesheet" href="/app.dist.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
   <style>
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .sb-wrapper {
       width: 980px;
+      padding-top: 80px;
       margin: 0px auto;
     }
 
@@ -19,6 +25,7 @@
 
     .sb-text {
       font-family: sans-serif;
+      padding-bottom: 20px;
     }
 
     .sb-capitalize {
@@ -28,11 +35,13 @@
     .sb-copy-btn {
       padding: 10px;
       cursor: pointer;
+      background: #F5F5F5;
+      outline: 0;
+      border: 1px solid #999;
     }
 
     h1.sb-text {
       font-size: 36px;
-      padding: 24px 0px;
       font-weight: bold;
     }
 
@@ -51,6 +60,10 @@
       margin-top: 10px;
     }
 
+    .sb-code-block > pre {
+      margin: 0;
+    }
+
     .sb-home-page {
       position: fixed;
       left: 0;
@@ -60,60 +73,60 @@
   </style>
 </head>
 <body>
-  <a class="sb-text sb-home-page" href="/">Go back to Index</a>
+<a class="sb-text sb-home-page" href="/">Go back to Index</a>
+<div class="sb-wrapper">
   <h1 class="sb-text">{{titleize name}}</h1>
   <p class="sb-text">{{ description }}</p>
-    {{#each examples }}
-    <div id="sb-component-{{ variant }}" class="sb-component">
-      <h2 class="sb-text">
-        {{#if variant}}
-          <a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
-        {{/if}}
-      </h2>
-      {{{ code }}}
-      <code class="sb-code-block">
-        <pre id="sb-code-{{ variant }}">
-          {{ code }}
-        </pre>
-        <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ variant }}">COPY</button>
-      </code>
-    </div>
-    {{#if scriptExample}}
-      <hr>
+  {{#each examples }}
+  <div id="sb-component-{{ variant }}" class="sb-component">
+    {{#if variant}}
+    <h2 class="sb-text">
+      <a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
+  </h2>
+  {{/if}}
+  {{{ code }}}
+  <code class="sb-code-block">
+    <pre id="sb-code-{{ variant }}">
+            {{ code }}
+    </pre>
+    <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ variant }}">COPY</button>
+  </code>
+</div>
+{{#if scriptExample}}
+<hr>
 <code class="sb-code-block">
-<pre id="sb-code-{{ variant }}">
-{{ scriptExample }}
-</pre>
+  <pre id="sb-code-{{ variant }}">
+  {{ scriptExample }}
+  </pre>
 </code>
-    <script>
-      {{{ scriptExample }}}
-    </script>
-    {{/if}}
-    <script>
-      (function() {
-       var client = new ZeroClipboard(document.getElementById('sb-{{ variant }}-copy-btn'));
+<script>
+{{{ scriptExample }}}
+</script>
+{{/if}}
+<script>
+(function() {
+ var client = new ZeroClipboard(document.getElementById('sb-{{ variant }}-copy-btn'));
 
-        client.on( "ready", function( readyEvent ) {
-          // alert( "ZeroClipboard SWF is ready!" );
+ client.on( "ready", function( readyEvent ) {
+   client.on( "copy", function( event ) {
+     var clipboard = event.clipboardData,
+     contents = document.getElementById(event.target.dataset.target)
+     .innerHTML;
 
-          client.on( "copy", function( event ) {
-            var clipboard = event.clipboardData,
-                contents = document.getElementById(event.target.dataset.target)
-                                   .innerHTML;
-                
-            // Replace html entities so that it will be copied as html onto the clipboard
-            contents = contents.replace(/&amp;/g, '&')
-                               .replace(/&lt;/g, '<')
-                               .replace(/&gt;/g, '>')
-                               .replace(/&quot;/g, '"');
+     // Replace html entities so that it will be copied as html onto the clipboard
+     contents = contents.replace(/&amp;/g, '&')
+     .replace(/&lt;/g, '<')
+     .replace(/&gt;/g, '>')
+     .replace(/&quot;/g, '"');
 
-            clipboard.setData("text/plain", contents);
-            alert("Copied to clipboard");
-          });
-        });
-      }());
-    </script>
-    <hr>
-    {{/each}}
+     clipboard.setData("text/plain", contents);
+     alert("Copied to clipboard");
+     });
+   });
+}());
+</script>
+<hr>
+{{/each}}
+  </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 # Parata
-Component based styles for the web.
+Component based styles for the web. Parata enforces you to build re-usable components for the web and generates a component wise styleguide.
 
 ## Getting Started
-Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). Parata lets you build re-usable components for the web and generates a component wise styleguide.
+Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). .
 
 Once `grunt` is installed, follow the steps listed below:
 ### Initialize an empty `npm` project
@@ -33,7 +33,6 @@ grunt.loadNpmTasks('parata');
   grunt.initConfig({
   parata: {
     options: {
-      stylePreProcessor: 'scss'
     }
   },
   sass: {
@@ -130,3 +129,9 @@ button {
 alert("Hello I'm a component!");
 </script>
 ```
+
+### Customize options
+`stylePreProcessor`   :    Extension of your style files. Eg.: `scss` or `less`.
+`componentsDirectory` :    Path where all your components reside.
+`dest`                :    Destination where all the build files go into.
+`serverPort`          :    Default port the `serve` task.
