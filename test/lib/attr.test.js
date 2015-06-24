@@ -71,4 +71,22 @@ describe('Attributes Mixin', function(){
       });
     });
   });
+
+  describe('#get', function() {
+    beforeEach(function() {
+      attr.load({
+        name: null
+      });
+
+      attr.set('name', 'Parata');
+    });
+
+    it('returns the correct value for the key', function() {
+      expect(attr.get('name')).to.equal('Parata');
+    });
+
+    it('returns undefined for an key that does\'nt exist', function() {
+      expect(attr.get('age')).to.be.undefined;
+    });
+  });
 });
