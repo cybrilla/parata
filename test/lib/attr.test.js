@@ -89,4 +89,23 @@ describe('Attributes Mixin', function(){
       expect(attr.get('age')).to.be.undefined;
     });
   });
+
+  describe('#dump', function() {
+    beforeEach(function() {
+      attr.load({
+        name: null,
+        age: null
+      });
+
+      attr.set('name', 'Parata')
+          .set('age', 25);
+    });
+
+    it('returns the correct object with key / value', function() {
+      expect(attr.dump()).to.eql({
+        name: 'Parata',
+        age: 25
+      });
+    });
+  });
 });
