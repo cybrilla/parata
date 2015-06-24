@@ -17,10 +17,9 @@ module.exports = function(grunt) {
   // Load custom task(s).
   grunt.loadTasks('tasks');
 
-  // Load Sass task
-  grunt.loadNpmTasks('grunt-contrib-sass');
-
+  // Load grunt mocha task
   grunt.loadNpmTasks('grunt-mocha-test');
 
+  // Register tasks
   grunt.registerTask('test', 'mochaTest');
 };
