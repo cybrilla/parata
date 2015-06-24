@@ -60,7 +60,7 @@ var generateComponentFile = function(components, dest, templatePath) {
 };
 
 var generateIndexFile = function(_components, dest, templatePath) {
-  var components = _components.map(function(c) { return c.getAttributes() });
+  var components = _components.map(function(c) { return c.attr.dump() });
 
   template.generateIndex(dest, templatePath, components);
 };
