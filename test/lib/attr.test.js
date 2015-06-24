@@ -55,4 +55,20 @@ describe('Attributes Mixin', function(){
 
     });
   });
+
+  describe('#load', function() {
+    beforeEach(function() {
+      attr.load({
+        name: null,
+        age: null
+      });
+    });
+
+    it('loads the data correctly', function() {
+      expect(attr.data).to.eql({
+        name: null,
+        age: null
+      });
+    });
+  });
 });
