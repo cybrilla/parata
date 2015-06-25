@@ -1,8 +1,10 @@
 var expect = require('chai').expect,
     fs = require('fs-extra'),
-    attr = require('../../lib/attr.js');
+    Attr = require('../../lib/attr.js');
 
 describe('Attributes Mixin', function(){
+
+  var attr = new Attr();
 
   it('has `data` as its attribute', function() {
     expect(typeof attr.data).to.not.be.undefined;
