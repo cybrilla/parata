@@ -24,7 +24,12 @@ $ npm install parata --save
   grunt.initConfig({
     parata: {
       options: {
-        stylePreProcessor: 'scss'
+        stylePreProcessor: 'scss',
+        externalJavscripts: [
+          'bower_components/jquery.js',
+          'app/main.js',
+          'app/script.js',
+        ]
       }
     }
   });

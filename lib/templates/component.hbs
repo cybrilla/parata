@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Parata | {{titleize name}}</title>
+  <title>Parata | {{titleize component.name}}</title>
   <link rel="stylesheet" href="/app.dist.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+  {{#each site.externalJavascripts}}
+    <script src="/{{ this }}"></script>
+  {{/each}}
   <style>
     * {
       margin: 0;
@@ -75,32 +78,32 @@
 <body>
 <a class="sb-text sb-home-page" href="/">Go back to Index</a>
 <div class="sb-wrapper">
-  <h1 class="sb-text">{{titleize name}}</h1>
-  <p class="sb-text">{{ description }}</p>
+  <h1 class="sb-text">{{titleize component.name}}</h1>
+  <p class="sb-text">{{ component.description }}</p>
   {{#each examples }}
   <div id="sb-component-{{ variant }}" class="sb-component">
-    {{#if variant}}
+    {{#if component.variant}}
     <h2 class="sb-text">
       <a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
   </h2>
   {{/if}}
-  {{{ code }}}
+  {{{ component.code }}}
   <code class="sb-code-block">
     <pre id="sb-code-{{ variant }}">
-            {{ code }}
+            {{ component.code }}
     </pre>
-    <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ variant }}">COPY</button>
+    <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ component.variant }}">COPY</button>
   </code>
 </div>
-{{#if scriptExample}}
+{{#if component.scriptExample}}
 <hr>
 <code class="sb-code-block">
   <pre id="sb-code-{{ variant }}">
-  {{ scriptExample }}
+  {{ component.scriptExample }}
   </pre>
 </code>
 <script>
-{{{ scriptExample }}}
+{{{ component.scriptExample }}}
 </script>
 {{/if}}
 <script>
