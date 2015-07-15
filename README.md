@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/cybrilla/parata.png?label=ready&title=Ready)](https://waffle.io/cybrilla/parata)
 # Parata
 
 [![Circle CI](https://circleci.com/gh/cybrilla/parata.svg?style=svg)](https://circleci.com/gh/cybrilla/parata)
