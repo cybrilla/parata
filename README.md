@@ -1,8 +1,8 @@
-[![Stories in Ready](https://badge.waffle.io/cybrilla/parata.png?label=ready&title=Ready)](https://waffle.io/cybrilla/parata)
 # Parata
 
 [![Circle CI](https://circleci.com/gh/cybrilla/parata.svg?style=svg)](https://circleci.com/gh/cybrilla/parata)
 [![Code Climate](https://codeclimate.com/github/cybrilla/parata/badges/gpa.svg)](https://codeclimate.com/github/cybrilla/parata)
+[![Stories in Ready](https://badge.waffle.io/cybrilla/parata.png?label=ready&title=Ready)](https://waffle.io/cybrilla/parata)
 
 Component based styles for the web. Parata enforces you to build re-usable components for the web and generates a component wise styleguide.
 
@@ -143,4 +143,5 @@ alert("Hello I'm a component!");
 `dest`                :    Destination where all the build files go into.
 
 `serverPort`          :    Default port the `serve` task.
+
 
