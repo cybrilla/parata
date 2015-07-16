@@ -6,13 +6,10 @@ var expect = require('chai').expect,
     path = require('path');
 
 describe('Site', function(){
-  var Options = taskHelper.configOptions,
-      logger = taskHelper.logger;
-
   describe('Initialisation', function() {
     var options = { 
         externalJavascripts: ['/app/script.js']
-      }
+      };
     
     beforeEach(function() {
       var site = new Site(options);
