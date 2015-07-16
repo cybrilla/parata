@@ -66,6 +66,5 @@ var generateIndexFile = function(_components, dest, templatePath) {
 };
 
 var generateSiteJS = function(options) {
-  site = new site(options);
-  return site
+  return new site(options);
 };
