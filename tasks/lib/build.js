@@ -8,9 +8,9 @@ module.exports = function(value, options, logger) {
   var componentsDirectoryPath = path.join(process.cwd(), options.componentsDirectory),
       dest = path.join(process.cwd(), options.dest),
       components,
-      site = return new Site(options);
+      site = new Site(options);
   components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
-  generateComponentFile(components, dest, options.componentTemplatePath,site);
+  generateComponentFile(components, dest, options.componentTemplatePath, site);
   generateIndexFile(components, dest, options.indexTemplatePath);
 
   // TODO
@@ -50,12 +50,12 @@ var getComponents = function(srcPath, styleExt, dest) {
   return components;
 };
 
-var generateComponentFile = function(components, dest, templatePath,site) {
+var generateComponentFile = function(components, dest, templatePath, site) {
   var i, length,
       component;
   for(i=0, length=components.length; i<length; i++) {
     component = components[i];
-    template.generateComponent(dest, templatePath, component,site);
+    template.generateComponent(dest, templatePath, component, site);
   }
 };
 
