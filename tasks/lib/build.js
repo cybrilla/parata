@@ -34,7 +34,9 @@ var getComponents = function(srcPath, styleExt, dest) {
     if(stat.isDirectory()) {
       parser = new Parser();
       parser.setStyleFilePath(path.join(item, 'style.' + styleExt))
+            .setsetStyleContents()
             .setExampleFilePath(path.join(item, 'example.html'))
+            .setExampleContents()
             .run();
 
       results = parser.getComponents();
