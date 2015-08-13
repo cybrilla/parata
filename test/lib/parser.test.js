@@ -35,40 +35,38 @@ describe('Parser', function(){
 
   describe('parsing methods', function() {
 
-    var pattern = /\/\*\*([\s\S]+?)\*\//gi,
-        styleContents = fs.readFileSync(styleFilePath, 'utf8'),
-        match = pattern.exec(styleContents),
-        emptyContents = '',
-        emptyMatch = pattern.exec(emptyContents);
+    var parsingFilePath = path.join(__dirname, '../fixtures/parse_input.html'),
+        parsingContents = fs.readFileSync(parsingFilePath, 'utf8'),
+        emptyContents = '';
 
     describe('#parseName', function() {
       it('should parse the name correctly', function() {
-        expect(parser.parseName(match)).to.equal('component-name-1');
+        expect(parser.parseName(parsingContents)).to.equal('component-name-1');
       });
 
       it('should return empty in case of no match', function() {
-        expect(parser.parseName(emptyMatch)).to.be.empty;
+        expect(parser.parseName(emptyContents)).to.be.empty;
       });
     });
 
     describe('#parseDescription', function() {
       it('should parse the description correctly', function() {
-        expect(parser.parseDescription(match)).to.equal('I am an awesome component 1.');
+        expect(parser.parseDescription(parsingContents)).to.equal('I am an awesome component 1.');
       });
 
       it('should return empty in case of no match', function() {
-        expect(parser.parseDescription(emptyMatch)).to.be.empty;
+        expect(parser.parseDescription(emptyContents)).to.be.empty;
       });
     });
 
     describe('#parseVariants', function() {
       it('should parse the variants correctly', function() {
-        expect(parser.parseVariants(match)).to.have.length(3);
-        expect(parser.parseVariants(match)).to.include('primary', 'default', 'secondary');
+        expect(parser.parseVariants(parsingContents)).to.have.length(3);
+        expect(parser.parseVariants(parsingContents)).to.include('primary', 'default', 'secondary');
       });
 
       it('should return empty in case of no match', function() {
-        expect(parser.parseVariants(emptyMatch)).to.be.empty;
+        expect(parser.parseVariants(emptyContents)).to.be.empty;
       });
     });
 
@@ -78,7 +76,7 @@ describe('Parser', function(){
       });
 
       it('should return empty in case of no match', function() {
-        expect(parser.parseHTMLExample(emptyMatch)).to.be.empty;
+        expect(parser.parseHTMLExample(emptyContents)).to.be.empty;
       });
     });
 
@@ -88,7 +86,7 @@ describe('Parser', function(){
       });
 
       it('should return empty in case of no match', function() {
-        expect(parser.parseJSExample(emptyMatch)).to.be.empty;
+        expect(parser.parseJSExample(emptyContents)).to.be.empty;
       });
     });
 
