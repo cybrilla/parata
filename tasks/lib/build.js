@@ -4,12 +4,13 @@ var fs = require('fs-extra'),
     template = require('../../lib/template.js'),
     Site = require('../../lib/site.js');
 
-module.exports = function(value, options, logger) {
+module.exports = function(options, logger) {
   var componentsDirectoryPath = path.join(process.cwd(), options.componentsDirectory),
       dest = path.join(process.cwd(), options.dest),
       components,
-      site = new Site(options);
-  components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
+      site = new Site(options),
+      components = getComponents(componentsDirectoryPath, options.styleFileExt, options.dest);
+
   generateComponentFile(components, dest, options.componentTemplatePath, site);
   generateIndexFile(components, dest, options.indexTemplatePath);
 

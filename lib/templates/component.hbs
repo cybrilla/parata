@@ -80,30 +80,30 @@
 <div class="sb-wrapper">
   <h1 class="sb-text">{{titleize component.name}}</h1>
   <p class="sb-text">{{ component.description }}</p>
-  {{#each examples }}
+  {{#each component.examples }}
   <div id="sb-component-{{ variant }}" class="sb-component">
-    {{#if component.variant}}
+    {{#if variant}}
     <h2 class="sb-text">
       <a href="#sb-component-{{ variant }}">.{{ variant }}</a></h2>
   </h2>
   {{/if}}
-  {{{ component.code }}}
+  {{{ code }}}
   <code class="sb-code-block">
     <pre id="sb-code-{{ variant }}">
-            {{ component.code }}
+            {{ code }}
     </pre>
-    <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ component.variant }}">COPY</button>
+    <button class="sb-copy-btn" id="sb-{{ variant }}-copy-btn" data-target="sb-code-{{ variant }}">COPY</button>
   </code>
 </div>
-{{#if component.scriptExample}}
+{{#if scriptExample}}
 <hr>
 <code class="sb-code-block">
   <pre id="sb-code-{{ variant }}">
-  {{ component.scriptExample }}
+  {{ scriptExample }}
   </pre>
 </code>
 <script>
-{{{ component.scriptExample }}}
+{{{ scriptExample }}}
 </script>
 {{/if}}
 <script>
