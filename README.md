@@ -2,90 +2,17 @@
 
 [![Circle CI](https://circleci.com/gh/cybrilla/parata.svg?style=svg)](https://circleci.com/gh/cybrilla/parata)
 [![Code Climate](https://codeclimate.com/github/cybrilla/parata/badges/gpa.svg)](https://codeclimate.com/github/cybrilla/parata)
+[![Stories in Ready](https://badge.waffle.io/cybrilla/parata.png?label=ready&title=Ready)](https://waffle.io/cybrilla/parata)
 
 Component based styles for the web. Parata enforces you to build re-usable components for the web and generates a component wise styleguide.
 
 ## Getting Started
-Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). .
+Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). There is a generator included which is packaged as a `yeoman` generator. Refer here to get started on the generator: https://github.com/cybrilla/generator-parata
 
-Once `grunt` is installed, follow the steps listed below:
-### Initialize an empty `npm` project
-```
-$ npm init
-```
-
-### Install Parata
-```
-$ npm install parata --save
-```
-
-### Add Parata to Gruntfile.js
-```
-  grunt.initConfig({
-    parata: {
-      options: {
-        stylePreProcessor: 'scss',
-        externalJavscripts: [
-          'bower_components/jquery.js',
-          'app/main.js',
-          'app/script.js',
-        ]
-      }
-    }
-  });
-  
-grunt.loadNpmTasks('parata');
-```
- 
-### Configure sass / less
-```
-  grunt.initConfig({
-  parata: {
-    options: {
-    }
-  },
-  sass: {
-    dist: {
-      files: {
-        'dist/app.dist.css': 'components/app.scss'
-      }
-    }
-  }
-});
-
-// Load the plugin that provides the "uglify" task.
-grunt.loadNpmTasks('parata');
-
-grunt.loadNpmTasks('grunt-contrib-sass');
-```
-
-### Initialize Parata
-```
-$ grunt parata --init
-```
- 
-### Create a component
-```
-$ grunt parata --component button
-```
-
-### Compile sass / less
-```
-$ grunt sass
-```
-
-### Build components
-```
-$ grunt parata --build
-```
-
-### Preview your component
-```
-$ grunt parata --serve
-```
-Navigate to: `http://localhost:8888/test/button`
+Or simply run: `$ npm install -g generator-parata`. You may required root permissions for it. Also make sure you have yeoman installed. Make sure you read the docs: https://github.com/cybrilla/generator-parata
 
 ## Quick example
+Generate a `button` component if you haven't created one using the generator.
 Open `components/button/` in your editor.
 
 #### Add some styling
@@ -114,7 +41,6 @@ button {
 }
 ```
  
-
 #### Import the component to `components/app.scss`
 ```
 /**
@@ -123,7 +49,6 @@ button {
 
   @import 'button/style'
 ```
-
 
 #### Create an HTML sample / example for the component in example.html
 ```
@@ -139,12 +64,15 @@ alert("Hello I'm a component!");
 </script>
 ```
 
-### Customize options
-`stylePreProcessor`   :    Extension of your style files. Eg.: `scss` or `less`.
+#### Build
+```
+$ grunt parata --build
+```
 
-`componentsDirectory` :    Path where all your components reside.
+#### Serve
+```
+$ grunt serve
+```
 
-`dest`                :    Destination where all the build files go into.
-
-`serverPort`          :    Default port the `serve` task.
+This will start a server at `http://localhost:8888`.
 
