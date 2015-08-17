@@ -71,7 +71,8 @@ $ grunt parata --build
 
 #### Serve
 ```
-$ grunt server
+$ grunt serve
 ```
 
 This will start a server at `http://localhost:8888`.
+

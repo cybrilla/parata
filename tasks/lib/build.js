@@ -1,15 +1,16 @@
 var fs = require('fs-extra'),
     path = require('path'),
     Parser = require('../../lib/parser.js'),
-    template = require('../../lib/template.js');
+    template = require('../../lib/template.js'),
+    Site = require('../../lib/site.js');
 
 module.exports = function(value, options, logger) {
   var componentsDirectoryPath = path.join(process.cwd(), options.componentsDirectory),
       dest = path.join(process.cwd(), options.dest),
-      components;
-
+      components,
+      site = new Site(options);
   components = getComponents(componentsDirectoryPath, options.stylePreProcessor, options.dest);
-  generateComponentFile(components, dest, options.componentTemplatePath);
+  generateComponentFile(components, dest, options.componentTemplatePath, site);
   generateIndexFile(components, dest, options.indexTemplatePath);
 
   // TODO
@@ -49,13 +50,12 @@ var getComponents = function(srcPath, styleExt, dest) {
   return components;
 };
 
-var generateComponentFile = function(components, dest, templatePath) {
+var generateComponentFile = function(components, dest, templatePath, site) {
   var i, length,
       component;
-
   for(i=0, length=components.length; i<length; i++) {
     component = components[i];
-    template.generateComponent(dest, templatePath, component);
+    template.generateComponent(dest, templatePath, component, site);
   }
 };
 
