@@ -6,25 +6,37 @@ var expect = require('chai').expect,
     path = require('path');
 
 describe('Site', function(){
-  describe('Initialisation', function() {
-    var options = { 
-        externalJavascripts: ['/app/script.js']
-      };
-    
-    beforeEach(function() {
-      var site = new Site(options);
-    });
+  describe('Initialization', function() {
 
-    it("should have its argument as an object", function() {
-      expect(options).to.be.an('object');
-    });
+    context('with default options', function() {
+      var site;
 
-    it("options should have  externalJavascripts as an attribute", function() {
-      expect(options.externalJavascripts).to.not.be.undefined;
-    });
-    
-    it("externalJavascripts should be an array", function() {
-      expect(options.externalJavascripts).to.be.an('array');
+      beforeEach(function() {
+        site = new Site();
+      });
+
+      it('should have `attr` as an attribute', function() {
+        expect(site.attr).to.be.an('object');
+      });
+
+      it('should have `externalJavascripts` value sett to an empty array', function() {
+        expect(site.attr.get('externalJavascripts')).to.be.an('array');
+      });
+    })
+
+    context('when `externalJavascripts` is provided as an option', function() {
+      var site,
+          options = { 
+            externalJavascripts: ['/app/script.js']
+          };
+
+      beforeEach(function() {
+        site = new Site(options);
+      });
+
+      it('should include the correct values', function() {
+        expect(site.attr.get('externalJavascripts')).to.eql([ '/app/script.js' ]);
+      });
     });
 
   });
