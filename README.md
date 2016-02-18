@@ -9,14 +9,14 @@ Component based styles for the web. Parata enforces you to build re-usable compo
 ## Getting Started
 Parata is packaged as a `grunt` plugin. So, make sure you install [GruntJS](http://gruntjs.com). There is a generator included which is packaged as a `yeoman` generator. Refer here to get started on the generator: https://github.com/cybrilla/generator-parata
 
-Or simply run: `$ npm install -g generator-parata`. You may required root permissions for it. Also make sure you have yeoman installed. Make sure you read the docs: https://github.com/cybrilla/generator-parata
+Or simply run: `$ npm install -g generator-parata`. You may require root permissions for it. Also make sure you have yeoman installed. Make sure you read the docs: https://github.com/cybrilla/generator-parata
 
 ## Quick example
 Generate a `button` component if you haven't created one using the generator.
 Open `components/button/` in your editor.
 
 #### Add some styling
-```
+```scss
 /**
   * @component button
   * @description Button.
@@ -42,7 +42,7 @@ button {
 ```
  
 #### Import the component to `components/app.scss`
-```
+```scss
 /**
   * Bootstrap file for all styles
   */
@@ -51,26 +51,26 @@ button {
 ```
 
 #### Create an HTML sample / example for the component in example.html
-```
+```html
 <example for="button">
 <button class="{{ variant }}">{{ variant }}</button>
 </example>
 ```
 
 #### Create a javascript snippet for the component in example.html
-```
+```js
 <script for="button">
 alert("Hello I'm a component!");
 </script>
 ```
 
 #### Build
-```
+```sh
 $ grunt parata --build
 ```
 
 #### Serve
-```
+```sh
 $ grunt serve
 ```
 
